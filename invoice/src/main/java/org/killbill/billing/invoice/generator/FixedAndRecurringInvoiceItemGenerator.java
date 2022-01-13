@@ -375,7 +375,7 @@ public class FixedAndRecurringInvoiceItemGenerator extends InvoiceItemGenerator 
 //            if (leadingProRationPeriods != null && leadingProRationPeriods.compareTo(BigDecimal.ZERO) > 0) {
                 // Not common - add info in the logs for debugging purposes
 //                final RecurringInvoiceItemData itemData = new RecurringInvoiceItemData(startDate, billingIntervalDetail.getFirstBillingCycleDate(), leadingProRationPeriods);
-                final RecurringInvoiceItemData itemData = adjForCalendarMonth(newstartDate, endDate, billingIntervalDetail.getFirstBillingCycleDate());
+                final RecurringInvoiceItemData itemData = adjForCalendarMonth(newstartDate, newendDate, billingIntervalDetail.getFirstBillingCycleDate());
                 log.info("Adding pro-ration: {}", itemData);
                 results.add(itemData);
 //            }

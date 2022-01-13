@@ -119,7 +119,10 @@ public class InvoiceDateUtils {
                 if(startDate.getMonthOfYear() != endDate.getMonthOfYear()) {
                     endDate = endDate.withDayOfMonth(1);
                 } else {
-                    endDate = endDate.plusMonths(1).withDayOfMonth(1);
+                    if (endDate.getDayOfMonth() == 5) { //首月订阅不计费，次月5号开始计费
+                        return BigDecimal.ZERO;
+                    } else { //当月订阅后当月取消
+                    }
                 }
             }
         }
