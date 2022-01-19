@@ -124,6 +124,12 @@ public class InvoiceDateUtils {
                     } else { //当月订阅后当月取消
                     }
                 }
+            } else {
+                if (endDate.getDayOfMonth() > 5 && endDate.withDayOfMonth(1).equals(startDate.withDayOfMonth(1))) {
+                    startDate = startDate.withDayOfMonth(1);
+                } else {
+                    startDate = startDate.plusMonths(1).withDayOfMonth(1);
+                }
             }
         }
         return calculateProrationBetweenDates(startDate, endDate, Days.daysBetween(startDate, startDate.plusMonths(1)).getDays());
