@@ -132,7 +132,7 @@ public class InvoiceDateUtils {
                 }
             }
         }
-        return calculateProrationBetweenDates(startDate, endDate, Days.daysBetween(startDate, startDate.plusMonths(1)).getDays());
+        return calculateProrationBetweenDates(startDate, endDate, startDate.toDateTimeAtCurrentTime().dayOfMonth().getMaximumValue());
     }
 
     public static RecurringInvoiceItemData adjForCalendarMonth(LocalDate startDate, LocalDate endDate, final LocalDate firstBillingCycleDate) {
@@ -142,7 +142,7 @@ public class InvoiceDateUtils {
             if (endDate.isBefore(startDate)) {
                 endDate = endDate.plusMonths(1);
             }
-            proration = calculateProrationBetweenDates(startDate, endDate, Days.daysBetween(startDate, startDate.plusMonths(1)).getDays());
+            proration = calculateProrationBetweenDates(startDate, endDate, startDate.toDateTimeAtCurrentTime().dayOfMonth().getMaximumValue());
             return new RecurringInvoiceItemData(startDate, endDate, proration);
         }
         if(endDate != null && !startDate.plusMonths(1).equals(endDate)) {
