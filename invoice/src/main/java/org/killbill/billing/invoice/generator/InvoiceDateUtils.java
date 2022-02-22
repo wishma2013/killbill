@@ -111,7 +111,7 @@ public class InvoiceDateUtils {
      */
     public static BigDecimal adjForCalendarMonth(LocalDate startDate, LocalDate endDate, BillingPeriod period, final LocalDate billingStartDate) {
         if (period.getPeriod().getMonths() == 1) {
-            if(startDate.plusMonths(1).equals(endDate) && billingStartDate.isBefore(startDate.minusMonths(1).withDayOfMonth(5))) {
+            if(startDate.plusMonths(1).equals(endDate) && !billingStartDate.isAfter(startDate.withDayOfMonth(1))) {
                 return BigDecimal.ONE;
             }
             if (billingStartDate.withDayOfMonth(1).equals(startDate.withDayOfMonth(1))) { // 首月不足月比例
